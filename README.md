@@ -1,4 +1,4 @@
-# MetricsSwifted v1.1.1
+# MetricsSwifted v1.1.3
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
