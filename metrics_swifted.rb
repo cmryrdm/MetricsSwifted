@@ -6,8 +6,8 @@ THIRD_PARTY_DIRS = %w[
 ].freeze
 
 # Additional folder names to exclude (user can extend this list)
-#EXCLUDED_FOLDER_NAMES = %w[
-#].freeze
+EXCLUDED_FOLDER_NAMES = %w[
+].freeze
 
 # Known test base classes (indirect XCTestCase subclasses) — item 16
 # Add your custom test base class names here
