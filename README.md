@@ -9,13 +9,13 @@
 
 # Swift LOC Counter — Decision Log
 
-## Overview
+## 🔵 Overview
 
 Scans all `.swift` files in a given directory recursively and reports lines of code, blank lines, and comment lines per run. Third-party paths are skipped (shared exclusion logic with the unused type scanner).
 
 ---
 
-## Decision Items
+## 📋 Decision Items
 
 **1.** A line is stripped of leading and trailing whitespace before classification.
 
@@ -37,7 +37,7 @@ Scans all `.swift` files in a given directory recursively and reports lines of c
 
 ---
 
-## Known Limitations
+## ⚠️ Known Limitations
 
 - A line that contains both code and an inline comment (e.g. `let x = 1 // note`) is counted as a line of code, not a comment line.
 - Block comment detection is line-based; a `/*` and `*/` on the same line is not handled as a special case.
@@ -46,13 +46,13 @@ Scans all `.swift` files in a given directory recursively and reports lines of c
 
 # Swift Unused Code Scanner — Decision Log
 
-## Overview
+## 🔵 Overview
 
 We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as a single unified corpus. For every `.swift` file, we extract every `class`, `struct`, `enum`, and `protocol` declaration. Each type is then checked individually for any reference anywhere in the codebase. A type is marked **unused** if it has zero references anywhere, considering all rules below. A file is considered fully unused only if every type declared inside it is unused.
 
 ---
 
-## Decision Items
+## 📋 Decision Items
 
 **1.** We scan inside `.swift` files and extract every `class`, `struct`, `enum`, and `protocol` declaration. Each type is checked independently — we search for any mention of that type name across the entire codebase. A type with zero mentions is marked unused.
 
@@ -90,7 +90,7 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 
 ---
 
-## Known Limitations (Excluded at This Stage)
+## ⚠️ Known Limitations (Excluded at This Stage)
 
 - `@objc` dynamic dispatch and Objective-C interop (item 4)
 - `NSClassFromString` string-based instantiation (item 7)
