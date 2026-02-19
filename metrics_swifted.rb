@@ -146,7 +146,7 @@ end
 
 # Build the full text corpus from all first-party swift files (for reference searching)
 def build_corpus(all_files)
-  all_files.map { |f| strip_comments(File.read(f, encoding: "utf-8") rescue "") }.join("\n")
+  all_files.map { |f| begin; strip_comments(File.read(f, encoding: "utf-8")); rescue; ""; end }.join("\n")
 end
 
 def find_unused_types(directory)
