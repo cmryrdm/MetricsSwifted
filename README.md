@@ -1,4 +1,4 @@
-# MetricsSwifted v1.1.8
+# MetricsSwifted v1.1.9
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
@@ -80,7 +80,7 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 
 **13.** `public` declarations with no references outside their module are counted as unused.
 
-**14.** Declarations inside `#if DEBUG`/`#endif` blocks are skipped entirely and not included in analysis.
+**14.** Declarations inside any `#if`/`#endif` block (e.g. `#if DEBUG`, `#if canImport(...)`, `#if os(...)`) are skipped entirely and not included in analysis.
 
 **15.** The full codebase — iOS app and all SPM SDKs — is scanned together as a single unified corpus. See item 6.
 

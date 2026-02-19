@@ -85,8 +85,8 @@ def extract_declarations(file_path)
   lines.each_with_index do |line, idx|
     stripped = line.strip
 
-    # item 14 — skip declarations inside #if DEBUG blocks
-    if stripped.match?(/^#if\s+DEBUG/)
+    # item 14 — skip declarations inside any #if block
+    if stripped.match?(/^#if\b/)
       in_debug_block = true
       next
     end
