@@ -1,4 +1,4 @@
-# MetricsSwifted v1.1.6
+# MetricsSwifted v1.1.7
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
@@ -89,6 +89,8 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 **17.** SwiftUI preview structs (e.g. `struct Foo_Previews: PreviewProvider`) are excluded from analysis as they exist solely for Xcode Canvas and are never referenced in production code.
 
 **18.** Type name mentions inside `//` single-line comments or `/* */` block comments are not counted as real references. The corpus is stripped of all comments before reference scanning.
+
+**19.** Any class conforming to `UNNotificationServiceExtension` is marked as used as it is instantiated by the system, not by app code.
 
 ---
 

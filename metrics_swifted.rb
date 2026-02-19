@@ -104,6 +104,9 @@ def extract_declarations(file_path)
     # item 5 — class conforming to UIApplicationDelegate is used
     next if kind == "class" && line.include?("UIApplicationDelegate")
 
+    # item 19 — class conforming to UNNotificationServiceExtension is used
+    next if kind == "class" && line.include?("UNNotificationServiceExtension")
+
     # item 16 — class inheriting from a known test base class is used
     next if kind == "class" && TEST_BASE_CLASSES.any? { |base| line.include?(base) }
 
