@@ -1,4 +1,4 @@
-# MetricsSwifted v1.1.7
+# MetricsSwifted v1.1.8
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
@@ -80,7 +80,7 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 
 **13.** `public` declarations with no references outside their module are counted as unused.
 
-**14.** Preprocessor macro branches (`#if`/`#else`/`#endif`) are excluded from analysis at this stage, documented as a known limitation.
+**14.** Declarations inside `#if DEBUG`/`#endif` blocks are skipped entirely and not included in analysis.
 
 **15.** The full codebase — iOS app and all SPM SDKs — is scanned together as a single unified corpus. See item 6.
 
@@ -99,7 +99,6 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 - `@objc` dynamic dispatch and Objective-C interop (item 4)
 - `NSClassFromString` string-based instantiation (item 7)
 - Assign-only property detection (item 12)
-- Preprocessor macro conditional branches (item 14)
 - Indirect `XCTestCase` inheritance (item 16)
 - XIB and Storyboard references (planned for a future iteration)
 

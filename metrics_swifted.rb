@@ -80,9 +80,20 @@ def extract_declarations(file_path)
   return declarations if content.include?("NSClassFromString")
 
   lines = content.lines
+  in_debug_block = false
 
   lines.each_with_index do |line, idx|
     stripped = line.strip
+
+    # item 14 — skip declarations inside #if DEBUG blocks
+    if stripped.match?(/^#if\s+DEBUG/)
+      in_debug_block = true
+      next
+    end
+    if in_debug_block
+      in_debug_block = false if stripped == "#endif"
+      next
+    end
 
     # item 3 — skip extensions
     next if stripped.match?(/\bextension\b/)
