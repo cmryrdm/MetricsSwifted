@@ -95,6 +95,9 @@ def extract_declarations(file_path)
       next
     end
 
+    # skip /// doc comments
+    next if stripped.start_with?("///")
+
     # item 3 — skip extensions
     next if stripped.match?(/\bextension\b/)
 
@@ -147,6 +150,8 @@ def strip_comments(source)
       next
     elsif stripped.start_with?("/*")
       in_block_comment = true
+      next
+    elsif stripped.start_with?("///")
       next
     elsif stripped.start_with?("//")
       next
