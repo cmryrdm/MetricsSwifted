@@ -1,4 +1,4 @@
-# MetricsSwifted v1.1.3
+# MetricsSwifted v1.1.5
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
@@ -87,6 +87,8 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 **16.** Indirect `XCTestCase` inheritance is excluded from analysis at this stage, documented as a known limitation.
 
 **17.** SwiftUI preview structs (e.g. `struct Foo_Previews: PreviewProvider`) are excluded from analysis as they exist solely for Xcode Canvas and are never referenced in production code.
+
+**18.** Type name mentions inside `//` single-line comments or `/* */` block comments are not counted as real references. The corpus is stripped of all comments before reference scanning.
 
 ---
 

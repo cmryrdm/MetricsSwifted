@@ -121,9 +121,32 @@ def extract_declarations(file_path)
   declarations
 end
 
+# Strip all comments from source content so type name mentions inside
+# // single-line or /* block */ comments are not counted as real references.
+def strip_comments(source)
+  result = []
+  in_block_comment = false
+  source.each_line do |line|
+    stripped = line.strip
+    if in_block_comment
+      in_block_comment = false if stripped.end_with?("*/")
+      next
+    elsif stripped.start_with?("/*")
+      in_block_comment = true
+      next
+    elsif stripped.start_with?("//")
+      next
+    else
+      # Remove inline trailing comment (e.g. let x = Foo() // Foo is used)
+      result << line.gsub(/\/\/.*$/, "")
+    end
+  end
+  result.join
+end
+
 # Build the full text corpus from all first-party swift files (for reference searching)
 def build_corpus(all_files)
-  all_files.map { |f| File.read(f, encoding: "utf-8") rescue "" }.join("\n")
+  all_files.map { |f| strip_comments(File.read(f, encoding: "utf-8") rescue "") }.join("\n")
 end
 
 def find_unused_types(directory)
