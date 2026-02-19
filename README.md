@@ -1,4 +1,4 @@
-# MetricsSwifted v1.2.1
+# MetricsSwifted v1.2.2
 
 ## You can follow the steps below in order to learn your line of code and unused code (swift only).
 
@@ -72,7 +72,7 @@ We scan all `.swift` files across the full codebase (iOS app + all SPM SDKs) as 
 
 **9.** `@main` marks a class as used. `@MainActor` is a concurrency annotation, not an entry point — since both start with `@main`, the regex must match `@main` as a whole word (i.e., `@main` not followed by `Actor` or any other characters) to avoid false matches.
 
-**10.** `Codable`/`CodingKeys` conformances are excluded from property-level analysis as Swift synthesizes invisible `encode`/`decode` code for them. Type-level (class/struct) detection is unaffected.
+**10.** Enums conforming to `CodingKey` are marked as used — they are implementation details of `Codable` synthesis and never referenced directly in code. `Codable` types themselves are still subject to unused analysis.
 
 **11.** Any enum where `EnumName(rawValue:)` appears anywhere in the codebase is marked as used.
 

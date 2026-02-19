@@ -127,6 +127,9 @@ def extract_declarations(file_path)
     # item 17 — SwiftUI preview structs are excluded (e.g. struct Foo_Previews: PreviewProvider)
     next if kind == "struct" && line.include?("PreviewProvider")
 
+    # item 10 — enums conforming to CodingKey are used implicitly by Codable synthesis
+    next if kind == "enum" && line.include?("CodingKey")
+
     # item 9 — @main marks the class as used (but NOT @MainActor)
     # Look backwards up to 3 lines for @main annotation
     lookahead = lines[[0, idx - 3].max...idx].map(&:strip)
